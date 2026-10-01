@@ -1,0 +1,351 @@
+@import "variable";
+@import "mixin";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: $background;
+    color: $text;
+    display: flex;
+}
+
+aside {
+    width: 292px;
+    height: 100vh;
+    background: $primary;
+    color: $white;
+    padding: 35px 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.logo-icon {
+    background: $accent;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.logo p {
+    margin: 5px 0 0;
+    color: #c8d0d1;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: $white;
+    padding: 15px;
+    text-align: left;
+    font-size: 17px;
+    border-radius: $radius;
+    cursor: pointer;
+}
+
+.nav-btn span {
+    margin-left: 12px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: $accent;
+    color: $text;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 35px;
+    left: 38px;
+    right: 20px;
+    border-top: 1px solid #29464a;
+    padding-top: 20px;
+    color: #c8d0d1;
+    font-size: 14px;
+}
+
+main {
+    margin-left: 292px;
+    width: calc(100% - 292px);
+    padding: 30px 38px;
+}
+
+section {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.top h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.top p {
+    margin: 5px 0;
+    color: $gray;
+    font-size: 17px;
+}
+
+.calendar {
+    width: 60px;
+    height: 45px;
+    background: $white;
+    border: none;
+    border-radius: $radius;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.welcome {
+    background: $primary;
+    color: $white;
+    border-radius: 14px;
+    padding: 30px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.welcome h2 {
+    margin: 0 0 8px;
+    font-size: 29px;
+}
+
+.welcome p {
+    margin: 0;
+    color: #d4dddd;
+    font-size: 16px;
+}
+
+.cap {
+    color: $accent;
+    font-size: 65px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 38px;
+}
+
+.stat-card {
+    @include card;
+
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.stat-card p {
+    margin: 0 0 5px;
+    color: $gray;
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.stat-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.pending {
+    background: #FFF0C2;
+    color: $warning;
+}
+
+.completed {
+    background: #D9F8E3;
+    color: $success;
+}
+
+.notes {
+    background: #F2E4E8;
+    color: $accent;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.section-title p {
+    margin: 5px 0;
+    color: $gray;
+}
+
+.add-button {
+    @include button-style;
+
+    background: $primary;
+    color: $white;
+}
+
+.add-button:hover {
+    background: $dark;
+}
+
+.form-box {
+    @include card;
+
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.task,
+.note {
+    @include card;
+
+    padding: 20px;
+    margin-bottom: 12px;
+}
+
+.task h3,
+.note h3 {
+    margin-top: 0;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task button,
+.note button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.complete-btn {
+    background: $success;
+    color: $white;
+}
+
+.delete-btn {
+    background: $error;
+    color: $white;
+}
+
+.note h3 {
+    color: $accent;
+}
+
+@media (max-width: 800px) {
+
+    aside {
+        width: 220px;
+    }
+
+    main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 25px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        display: block;
+    }
+
+    aside {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    .welcome,
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}

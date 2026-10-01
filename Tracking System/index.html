@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyTrack</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <aside>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                
+            </div>
+
+            <div>
+                <h1>StudyTrack</h1>
+                <p>Student Planner</p>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button
+                class="nav-btn active"
+                onclick="showPage('dashboard', this)">
+                 <span>Dashboard</span>
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="showPage('tasks', this)">
+                 <span>Tasks</span>
+            </button>
+
+            <button
+                class="nav-btn"
+                onclick="showPage('notes', this)">
+                <span>Notes</span>
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+            Study smarter, stay organized.
+        </div>
+
+    </aside>
+
+
+    <main>
+
+        <section id="dashboard">
+
+            <div class="top">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Keep track of your schoolwork and deadlines.</p>
+                </div>
+
+                <button class="calendar">
+                    
+                </button>
+
+            </div>
+
+
+            <div class="welcome">
+
+                <div>
+                    <h2>Welcome to StudyTrack!</h2>
+
+                    <p>
+                        Organize your tasks, deadlines,
+                        and study notes in one place.
+                    </p>
+                </div>
+
+                <div class="cap">
+                    
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon pending">
+                    
+                    </div>
+
+                    <div>
+                        <p>Pending Tasks</p>
+                        <h3 id="pendingCount">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon completed">
+                        
+                    </div>
+
+                    <div>
+                        <p>Completed Tasks</p>
+                        <h3 id="completedCount">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon notes">
+                        
+                    </div>
+
+                    <div>
+                        <p>Study Notes</p>
+                        <h3 id="notesCount">0</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <div>
+                    <h2>Upcoming Tasks</h2>
+                    <p>Your next school activities</p>
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="openTasks()">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <div id="upcomingTasks">
+                <p>No tasks yet.</p>
+            </div>
+
+        </section>
+
+
+        <section id="tasks" class="hidden">
+
+            <div class="top">
+
+                <div>
+                    <h2>My Tasks</h2>
+                    <p>Manage your school tasks and deadlines.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-box">
+
+                <input
+                    type="text"
+                    id="taskTitle"
+                    placeholder="Task title">
+
+                <input
+                    type="text"
+                    id="taskDescription"
+                    placeholder="Task description">
+
+                <input
+                    type="date"
+                    id="taskDeadline">
+
+                <button
+                    class="add-button"
+                    onclick="addTask()">
+                    + Add Task
+                </button>
+
+            </div>
+
+
+            <h2>Tasks</h2>
+
+            <div id="taskList">
+                <p>No tasks yet.</p>
+            </div>
+
+        </section>
+
+
+        <section id="notes" class="hidden">
+
+            <div class="top">
+
+                <div>
+                    <h2>Study Notes</h2>
+                    <p>Save important notes for your subjects.</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-box">
+
+                <input
+                    type="text"
+                    id="noteSubject"
+                    placeholder="Subject">
+
+                <textarea
+                    id="noteContent"
+                    placeholder="Write your note..."></textarea>
+
+                <button
+                    class="add-button"
+                    onclick="addNote()">
+                    + Add Note
+                </button>
+
+            </div>
+
+
+            <h2>My Notes</h2>
+
+            <div id="noteList">
+                <p>No study notes yet.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function showPage(page, button) {
+
+            document.getElementById("dashboard")
+                .classList.add("hidden");
+
+            document.getElementById("tasks")
+                .classList.add("hidden");
+
+            document.getElementById("notes")
+                .classList.add("hidden");
+
+            document.getElementById(page)
+                .classList.remove("hidden");
+
+
+            document.querySelectorAll(".nav-btn")
+                .forEach(function(btn) {
+
+                    btn.classList.remove("active");
+
+                });
+
+
+            button.classList.add("active");
+        }
+
+
+        function openTasks() {
+
+            showPage(
+                "tasks",
+                document.querySelectorAll(".nav-btn")[1]
+            );
+
+        }
+
+    </script>
+
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
